@@ -9,3 +9,10 @@ In order to run the makefile on a windows system, you will need to do the follow
 2. Run choco install make
 
 I promise, this is the absolutely last thing you will have to download, and you may even use it long term since you're a fan of the terminal.
+
+To run the program:
+1. In the command prompt, go into the directory with the Makefile. It should just be .../DenialAppealSystem/
+2. type 'make' to make the file
+3. Run the program using the command java -cp "postgresql-42.2.18.jar;." src/DenialAppealSystem.java
+
+If this doesn't work for you or throws errors like we were getting before, we may need to run the program using multiple jar files. But we'll cross that path when we get to it. :)
