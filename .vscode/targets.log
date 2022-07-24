@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sun Jul 24 07:55:40 2022
+# Make data base, printed on Sun Jul 24 08:57:27 2022
 
 # Variables
 
@@ -25,10 +26,9 @@ USERPROFILE = C:\Users\Sam
 # environment
 LOCALAPPDATA = C:\Users\Sam\AppData\Local
 # environment
-VSCODE_CWD = C:\Users\Sam\AppData\Local\Programs\Microsoft VS Code
+VSCODE_CWD = C:\WINDOWS\system32
 # environment
-CHOCOL 
-ATEYINSTALL = C:\ProgramData\chocolatey
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
 SYSTEMROOT = C:\WINDOWS
 # environment
@@ -40,7 +40,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11916_UPXISBKVYICNQVDL
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_24140_PCLBTFCIVDPUOTED
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -70,7 +70,7 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = C:\Users\Sam\OneDrive
 # makefile
-CURDIR := c:/Users/Sam/Desktop/1530/test/demo
+CURDIR := c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
@@ -90,7 +90,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 11916
+VSCODE_PID = 24140
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # environment
@@ -216,10 +216,10 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 
 # Directories
 
-# src (key c:/Users/Sam/Desktop/1530/test/demo/src, mtime 1658663718): 15 files, no impossibilities so far.
-# . (key c:/Users/Sam/Desktop/1530/test/demo, mtime 1658663739): 11 files, no impossibilities.
+# src (key c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem/src, mtime 1658663718): 15 files, no impossibilities so far.
+# . (key c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem, mtime 1658666418): 14 files, no impossibilities.
 
-# 26 files, no impossibilities in 2 directories.
+# 29 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -310,12 +310,13 @@ jar:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 36 / storage = 605 B / avg = 16 B
-# current buf: size = 8174 B / used = 605 B / count = 36 / avg = 16 B
+# strcache buffers: 1 (0) / strings  
+= 39 / storage = 636 B / avg = 16 B
+# current buf: size = 8174 B / used = 636 B / count = 39 / avg = 16 B
 
-# strcache performance: lookups = 52 / hit rate = 30%
+# strcache performance: lookups = 55 / hit rate = 29%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=0/52=0%
-# Finished Make data base on Sun Jul 24 07:55:40 2022
+# Load=39/8192=0%, Rehash=0, Collisions=0/55=0%
+# Finished Make data base on Sun Jul 24 08:57:27 2022
 
  

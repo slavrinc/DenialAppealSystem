@@ -1,5 +1,5 @@
 make.exe --dry-run --always-make --keep-going --print-directory
-make: Entering directory 'c:/Users/Sam/Desktop/1530/test/demo'
+make: Entering directory 'c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem'
 javac  src/DenialAppealSystem.java
-make: Leaving directory 'c:/Users/Sam/Desktop/1530/test/demo'
+make: Leaving directory 'c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem'
  
