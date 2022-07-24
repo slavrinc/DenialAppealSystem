@@ -633,7 +633,9 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         String passwordEntry = String.valueOf(password.getPassword());
         boolean connEstablished;
         
-        // init new class
+        // init new class - this may need to be defined outside of the function and initialized here
+        // so that we can do multiple function calls with controller class
+
         // connEstablished = call controller class function 
         
         // if function returns true
@@ -645,15 +647,43 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         
     }//GEN-LAST:event_LoginButtonClicked
 
+    /* --------------------------------------------------------------------------------------------------
+     * The following method is public to allow the controller class to update the denial list.
+     * 
+     * Currently, it is not called by any other function, will need to edit the functionality once it's used.
+     * Ideally, it'll function as a setter method for the denial list.
+     * 
+     * To do:
+     * - Add controller class function to obtain an array of denial strings from the DB and call this function
+     * - IN the controller class function
+     */
+    public void updateDenialList(String[] denialStrings) {
+        denialListList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+    }
 
+    /* --------------------------------------------------------------------------------------------------
+     * The following method returns to the login screen when the logout button is selected by the user.
+     * 
+     * Currently, it returns to user to the logout screen.
+     * 
+     * To do:
+     * - Add code to disconnect from the db
+     * 
+     */
     private void returnToLogin(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnToLogin
-        // TODO add your handling code here:
-        // will need to add component that disconnects from db
+
+        //if returning to the login screen from the denial list screen:
         if (denialList.isVisible()){
             denialList.setVisible(false);
             setTitle("Denial Appeal System - Login");
             loginPanel.setVisible(true);
         }
+
+        //if returning to the login screen from the letter generation screen:
         if (letterGenPanel.isVisible()){
             letterGenPanel.setVisible(false);
             setTitle("Denial Appeal System - Login");
@@ -661,8 +691,17 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_returnToLogin
 
+    /* -------------------------------------------------------------------------------------------------- 
+     * The following function allows the user to 'select' individual patients contained on the denial list.
+     * 
+     * Currently, it allows the patient to click on the list and automatically moves to the next screen
+     * 
+     * To do:
+     * - Create a function in the controller class that requests info from a single patient
+     *   within that function, call updatePatientInfo() to display the request within the view
+     * - Create a function in the controller class that requests the pregenerated denial list
+    */
     private void denialListListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_denialListListMouseClicked
-        // TODO add your handling code here:
         javax.swing.JList<String> tmpClickItem = (javax.swing.JList) evt.getSource();
         if (evt.getClickCount()== 2){
             denialList.setVisible(false);
@@ -677,33 +716,86 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         
     }//GEN-LAST:event_denialListListMouseClicked
 
+    /* -------------------------------------------------------------------------------------------------- 
+     * The following function updates the text contained on the Letter Generation Screen
+     * 
+     * Currently, it doesn't do anything that it should
+     * 
+     * To do:
+     * - Add appropriate Strings to update the text of the fields
+     * - Add appropriate String[] array to update the preGenAppealReasons text
+    */
+    public void updatePatientInfo(){ // will need to add the strings that are obtained from the db
+      
+        ptNameLabel.setText("Patient Name:");
+        ptDosLabel.setText("Date of Service:");
+        procLabel.setText("Procedure:");
+        dxLabel.setText("Diagnosis:");
+        attPhysLabel.setText("Attending Physician:");
+        insCoLabel.setText("Insurance Company:");
+        insCoAdd1.setText("Address: (line1)");
+        insCoAdd2.setText("(line2)");
+        insCoAdd3.setText("(line3/city,state zip)");
+        insCoLabel1.setText("Policy Number:");
+        ptDenialReasonLabel.setText("Denial Reason: ");
+
+        preGenAppealReasons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reason1", "Reason2", "Reason3", "Reason4" }));
+    }
+
+    /* --------------------------------------------------------------------------------------------------
+     * The following function is called when the user clicks the 'back' button on the letter generation 
+     * screen. 
+     * 
+     * Currently, it just makes the previous screen invisible and makes the denial list visible
+     * 
+     * To do:
+     * - add code to generate a new denial list from the db
+     * 
+     */
     private void returnToList(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnToList
-        // TODO add your handling code here:
         letterGenPanel.setVisible(false);
         denialList.setVisible(true);
-        //add code to generate a new list from the db
         setTitle("Denial Appeal System - Denial List");
     }//GEN-LAST:event_returnToList
 
+     /* --------------------------------------------------------------------------------------------------
+     * The following function is called when the user clicks the 'submit' button on the letter generation 
+     * screen. 
+     * 
+     * Currently, it just makes the previous screen invisible and makes the denial list visible
+     * 
+     * To do:
+     * - add code to generate a new denial list from the db
+     * - create function in the controller class to generate an appeal letter
+     * - create function in the controller class to update the claim code in the db
+     * - create function in the controller class to add a new denial reason to the db
+     * - if saveAppealReasonCheckBox is selected, call the function to create a new denial reason
+     * 
+     */
     private void submitAppeal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitAppeal
-        // TODO add your handling code here:
-        //calls generateDocument() and updateClaimStatus()
-        //if a new appeal reason was added, calls newAppeal() to save info
-        //in db
         letterGenPanel.setVisible(false);
         denialList.setVisible(true);
-        //add code to generate a new list from the db
         setTitle("Denial Appeal System - Denial List");
     }//GEN-LAST:event_submitAppeal
 
+    /* --------------------------------------------------------------------------------------------------
+     * The following function is called when the user clicks the 'Co Ins' button on the letter generation 
+     * screen. 
+     * 
+     * Currently, it just makes the previous screen invisible and makes the denial list visible
+     * 
+     * To do:
+     * - add code to generate a new denial list from the db
+     * - use function in the controller class to update the claim code in the db
+     * 
+     */
     private void patientResponsibility(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientResponsibility
-        // TODO add your handling code here:
         letterGenPanel.setVisible(false);
         denialList.setVisible(true);
-        //add code to change the claim status in DB
-        //add code to generate a new list from the db
         setTitle("Denial Appeal System - Denial List");
     }//GEN-LAST:event_patientResponsibility
+
+
 
     /**
      * @param args the command line arguments
