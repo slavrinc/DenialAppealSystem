@@ -626,6 +626,10 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      * - If function returns true, use the code below to allow user entry into the system
      * - If function returns false, call connErr.setVisible(true); to notify the user that
      *   the connection could not be established.
+     * 
+     * Part 2:
+     * - create a function in the controller class that requests a query from the db to generate the denialList
+     * 
      */
     private void LoginButtonClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonClicked
 
