@@ -642,6 +642,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         loginPanel.setVisible(false);
         denialList.setVisible(true);
         setTitle("Denial Appeal System - Denial List");
+        welcome.setText("Welcome, "); // update string with username
+        welcome1.setText("Welcome, ");// update string with username
         
         //if function returns false, add call to connErr.setVisible(true);
         
