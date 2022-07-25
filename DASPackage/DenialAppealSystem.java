@@ -651,11 +651,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
 
         // connEstablished = call controller class function 
         DatabaseController controller = new DatabaseController();
-        if(!controller.DatabaseInit()){
-            connErr.setVisible(true);
-        }
 
-        if(controller.checkCredentials(usernameEntry, passwordEntry)){
+        if(!controller.DatabaseInit(usernameEntry, passwordEntry)){
             loginPanel.setVisible(false);
             denialList.setVisible(true);
             setTitle("Denial Appeal System - Denial List");

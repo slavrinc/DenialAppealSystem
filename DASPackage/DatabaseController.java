@@ -10,7 +10,7 @@ public class DatabaseController {
         
     }
 
-    public boolean DatabaseInit() throws
+    public boolean DatabaseInit(String username, String password) throws
         SQLException, ClassNotFoundException{
 
         boolean loggedIn;
@@ -23,8 +23,6 @@ public class DatabaseController {
         conn =
                 DriverManager.getConnection(url, props);
 
-        String username = "postgres";
-        String password = "***";
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM VALID_USERS WHERE username=? AND password=?");
         stmt.setString(1, username);
         stmt.setString(2, password);
@@ -40,27 +38,4 @@ public class DatabaseController {
 
     }
 
-    public boolean checkCredentials(String username, String password){
-        
-        Statement st;
-        try {
-            st = conn.createStatement();
-            String query1 =
-                    "SELECT * FROM VALID_USERS WHERE username=? AND password=?";
-            ResultSet res1 = st.executeQuery(query1);
-            String rid;
-            String u, p;
-            while (res1.next()) {
-                rid = res1.getString("SID");
-                u = res1.getString("Name");
-                p = res1.getString(3);
-                if(u.equals(username) && p.equals(password)){
-                    return true;
-                }
-            }
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 }
