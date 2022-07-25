@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class DenialAppealSystem extends javax.swing.JFrame {
 
     private String patientId;
+    public DatabaseController controller = new DatabaseController();
 
     /**
      * Creates new form login
@@ -653,7 +654,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         // so that we can do multiple function calls with controller class
 
         // connEstablished = call controller class function 
-        DatabaseController controller = new DatabaseController();
+        // DatabaseController controller = new DatabaseController();
 
         if(controller.DatabaseInit(usernameEntry, passwordEntry)){
             loginPanel.setVisible(false);
@@ -740,8 +741,18 @@ public class DenialAppealSystem extends javax.swing.JFrame {
                 System.out.println("Double-clicked on: " + o.toString()); //remove with functionality, temporary placeholder of list item that was selected
             }
 
-            DatabaseController controller = new DatabaseController();
-            patientInfo = controller.populatePatientInformation(splitString[0], splitString[1], splitString[2]);
+            
+            System.out.println(splitString[0].toString() +  splitString[1].toString() + splitString[3].toString());
+            try {
+                try {
+                    patientInfo = controller.populatePatientInformation(splitString[0].toString(), splitString[1].toString(), splitString[3].toString());
+                } catch (SQLException e){
+    
+                }
+            } catch (ClassNotFoundException e){
+
+            }
+            
             patientId = patientInfo[0];
             updatePatientInfo(patientInfo);
 
@@ -759,6 +770,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      * - Add appropriate String[] array to update the preGenAppealReasons text
     */
     public void updatePatientInfo(String[] patientInfo){ // will need to add the strings that are obtained from the db
+
+        patientId = patientInfo[0];
       
         ptNameLabel.setText("Patient Name: " + patientInfo[1] + " " + patientInfo[2]);
         ptDosLabel.setText("Date of Service: " + patientInfo[3]);
@@ -768,8 +781,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         insCoLabel.setText("Insurance Company: " + patientInfo[9]);
         insCoAdd1.setText("Address: " + patientInfo[10]);
         insCoAdd2.setText(patientInfo[11]);
-        insCoAdd3.setText("City, State Zip " + patientInfo[12] + ", " + patientInfo[13] + " " + patientInfo[14]);
-        insCoLabel1.setText("Policy Number: " + patientInfo[0]);
+        insCoAdd3.setText(patientInfo[12] + ", " + patientInfo[13] + " " + patientInfo[14]);
+        insCoLabel1.setText("Policy Number: " + patientInfo[15]);
         ptDenialReasonLabel.setText("Denial Reason: " + patientInfo[16]);
 
         preGenAppealReasons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reason1", "Reason2", "Reason3", "Reason4" }));
