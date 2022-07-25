@@ -56,6 +56,7 @@ public class DatabaseController {
                 populateList.add(concat);
 
             }
+        }
         catch (SQLException e) {
             e.printStackTrace();
         }
