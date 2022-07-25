@@ -1,5 +1,7 @@
 make.exe --dry-run --always-make --keep-going --print-directory
-make: Entering directory 'c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem'
-javac  src/DenialAppealSystem.java
-make: Leaving directory 'c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem'
+make: Entering directory 'c:/Users/brand/OneDrive/Desktop/School/Pitt/CS 1530/DAS/New folder/DenialAppealSystem'
+javac  src/DASPackage/DenialAppealSystem.java
+ 
+javac  src/DASPackage/DatabaseController.java
+make: Leaving directory 'c:/Users/brand/OneDrive/Desktop/School/Pitt/CS 1530/DAS/New folder/DenialAppealSystem'
  

@@ -7,26 +7,22 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sun Jul 24 08:57:27 2022
+# Make data base, printed on Mon Jul 25 16:22:02 2022
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
 LC_ALL = C
 # makefile (from 'Makefile', line 3)
-SRC = src/DenialAppealSystem.java 
+SRC = src/DASPackage/DenialAppealSystem.java src/DASPackage/DatabaseController.java 
 # environment
-OCULUSBASE = C:\Program Files\Oculus\
+USERPROFILE = C:\Users\brand
 # environment
-USERPROFILE = C:\Users\Sam
+LOCALAPPDATA = C:\Users\brand\AppData\Local
 # environment
-LOCALAPPDATA = C:\Users\Sam\AppData\Local
-# environment
-VSCODE_CWD = C:\WINDOWS\system32
+VSCODE_CWD = C:\Users\brand\AppData\Local\Programs\Microsoft VS Code
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -40,9 +36,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_24140_PCLBTFCIVDPUOTED
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7964_RCISBXXKXKCQLUSM
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -54,13 +48,13 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Sam\AppData\Roaming\Code\CachedData\3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = C:\Users\brand\AppData\Roaming\Code\CachedData\3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
 LANG = C
 # default
 .LOADED := 
 # environment
-TMP = C:\Users\Sam\AppData\Local\Temp
+TMP = C:\Users\brand\AppData\Local\Temp
 # default
 .INCLUDE_DIRS = .
 # environment
@@ -68,9 +62,9 @@ PROCESSOR_ARCHITEW6432 = AMD64
 # makefile
 MAKEFLAGS = pqrR
 # environment
-ONEDRIVE = C:\Users\Sam\OneDrive
+ONEDRIVE = C:\Users\brand\OneDrive
 # makefile
-CURDIR := c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem
+CURDIR := c:/Users/brand/OneDrive/Desktop/School/Pitt/CS 1530/DAS/New folder/DenialAppealSystem
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
@@ -90,11 +84,9 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 24140
+VSCODE_PID = 7964
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
-# environment
-__PSLOCKDOWNPOLICY = 0
 # automatic
 *F = $(notdir $*)
 # makefile (from 'Makefile', line 2)
@@ -104,7 +96,7 @@ JAVACFLAGS =
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-ONEDRIVECONSUMER = C:\Users\Sam\OneDrive
+ONEDRIVECONSUMER = C:\Users\brand\OneDrive
 # default
 MAKE_HOST := Windows32
 # environment
@@ -112,7 +104,7 @@ PROGRAMDATA = C:\ProgramData
 # default
 SHELL := sh.exe
 # environment
-HOMEPATH = \Users\Sam
+HOMEPATH = \Users\brand
 # default
 MAKECMDGOALS := all
 # environment
@@ -126,9 +118,9 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Oculus\Support\oculus-runtime;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk1.8.0_231\bin;C:\Program Files (x86)\Calibre2\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Users\Sam\.cargo\bin;C:\Users\Sam\AppData\Local\Microsoft\WindowsApps;C:\Users\Sam\.dotnet\tools;C:\Program Files\Java\jdk1.8.0_231\bin;C:\Users\Sam\AppData\Local\GitHubDesktop\bin;
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;YSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Java\jdk-14.0.1\bin;C:\Dwimperl\perl\bin;C:\Dwimperl\perl\site\bin;C:\Dwimperl\c\bin;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\msys64\mingw64\bin;C:\ProgramData\chocolatey\bin;C:\Users\brand\AppData\Local\Microsoft\WindowsApps;C:\Users\brand\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\brand\AppData\Local\GitHubDesktop\bin
 # environment
-COMPUTERNAME = DESKTOP-GV3R8D0
+COMPUTERNAME = DESKTOP-04MNM29
 # default
 MAKEFILES := 
 # automatic
@@ -136,13 +128,13 @@ MAKEFILES :=
 # environment
 PROMPT = $P$G
 # environment
-CHOCOLATEYLASTPATHUPDATE = 132943493262378598
-# makefile (from 'Makefile', line 5)
+CHOCOLATEYLASTPATHUPDATE = 133032509525528603
+# makefile (from 'Makefile', line 6)
 CLS = $(SRC:.java=.class)
 # environment
-LOGONSERVER = \\DESKTOP-GV3R8D0
+LOGONSERVER = \\DESKTOP-04MNM29
 # environment
-USERNAME = Sam
+USERNAME = brand
 # environment
 COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
 # automatic
@@ -158,7 +150,7 @@ JAVAC = javac
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-USERDOMAIN = DESKTOP-GV3R8D0
+USERDOMAIN = DESKTOP-04MNM29
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -170,13 +162,13 @@ MAKE_VERSION := 4.3
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
-USERDOMAIN_ROAMINGPROFILE = DESKTOP-GV3R8D0
+USERDOMAIN_ROAMINGPROFILE = DESKTOP-04MNM29
 # environment
-NUMBER_OF_PROCESSORS = 16
+NUMBER_OF_PROCESSORS = 8
 # environment
 PUBLIC = C:\Users\Public
 # environment
-APPDATA = C:\Users\Sam\AppData\Roaming
+APPDATA = C:\Users\brand\AppData\Roaming
 # environment
 HOMEDRIVE = C:
 # environment
@@ -188,9 +180,9 @@ COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-TEMP = C:\Users\Sam\AppData\Local\Temp
+TEMP = C:\Users\brand\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\1edaabc77674d9be85267a201add9f8a-1.69.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\a7f411345ed7942eb26c16822955c51e-1.69.2-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -199,16 +191,19 @@ VSCODE_IPC_HOOK = \\.\pipe\1edaabc77674d9be85267a201add9f8a-1.69.2-main-sock
 SUFFIXES := 
 # environment
 ALLUSERSPROFILE = C:\ProgramData
+ 
 # environment
 SESSIONNAME = Console
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
-PROCESSOR_REVISION = 7100
+PROCESSOR_REVISION = 1801
 # environment
-PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
+MINITAB_LICENSE_FILE = C:\ProgramData\Minitab\Minitab 20
+# environment
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD
 # variable set hash-table stats:
-# Load=98/1024=10%, Rehash=0, Collisions=13/128=10%
+# Load=95/1024=9%, Rehash=0, Collisions=13/130=10%
 
 # Pattern-specific Variable Values
 
@@ -216,10 +211,10 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 
 # Directories
 
-# src (key c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem/src, mtime 1658663718): 15 files, no impossibilities so far.
-# . (key c:/Users/Sam/Desktop/1530/test/demo/DenialAppealSystem, mtime 1658666418): 14 files, no impossibilities.
+# src/DASPackage (key c:/Users/brand/OneDrive/Desktop/School/Pitt/CS 1530/DAS/New folder/DenialAppealSystem/src/DASPackage, mtime 1658779271): 4 files, no impossibilities so far.
+# . (key c:/Users/brand/OneDrive/Desktop/School/Pitt/CS 1530/DAS/New folder/DenialAppealSystem, mtime 1658778653): 14 files, no impossibilities.
 
-# 29 files, no impossibilities in 2 directories.
+# 18 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -228,25 +223,23 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 %.java:
 
 %.class: %.java
-#  recipe to execute (from 'Makefile', line 11):
+#  recipe to execute (from 'Makefile', line 12):
 	$(JAVAC) $(JAVACFLAGS) $<
 
 # 3 implicit rules, 0 (0.0%) terminal.
 # Files
 
-src/DenialAppealSystem.class: src/DenialAppealSystem.java
+# Not a target:
+src/DASPackage/DenialAppealSystem.java:
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/DenialAppealSystem'
-#  Last modified 2022-07-24 07:55:18
+#  Last modified 2022-07-25 16:11:18
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 11):
-	$(JAVAC) $(JAVACFLAGS) $<
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-24 07:54:03
+#  Last modified 2022-07-25 16:04:17
 #  File has been updated.
 #  Successfully updated.
 
@@ -254,21 +247,20 @@ Makefile:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 11):
+#  recipe to execute (from 'Makefile', line 12):
 	$(JAVAC) $(JAVACFLAGS) $<
+
+# Not a target:
+src/DASPackage/DatabaseController.class:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .java:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-src/DenialAppealSystem.java:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-24 07:40:22
-#  File has been updated.
-#  Successfully updated.
 
 # Not a target:
 .class:
@@ -282,18 +274,47 @@ src/DenialAppealSystem.java:
 #  Modification time never checked.
 #  File has not been updated.
 
-all: src/DenialAppealSystem.class
+all: src/DASPackage/DenialAppealSystem.class src/DASPackage/DatabaseController.class
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+src/DASPackage/DenialAppealSystem.class: src/DASPackage/DenialAppealSystem.java
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'src/DASPackage/DenialAppealSystem'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := src/DASPackage/DenialAppealSystem.class
+# automatic
+# * := src/DASPackage/DenialAppealSystem
+# automatic
+# < := src/DASPackage/DenialAppealSystem.java
+# automatic
+# + := src/DASPackage/DenialAppealSystem.java
+# automatic
+# % := 
+# automatic
+# ^ := src/DASPackage/DenialAppealSystem.java
+# automatic
+# ? := src/DASPackage/DenialAppealSystem.java
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=4/14=29%
+#  recipe to execute (from 'Makefile', line 12):
+	$(JAVAC) $(JAVACFLAGS) $<
 
 jar:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 14):
+#  recipe to execute (from 'Makefile', line 15):
 	jar -cp postgresql-42.2.18.jar $(classes) \
 	jar -cp KGradientPanel-SNAPSHOT.jar $(classes)
 
@@ -303,20 +324,19 @@ jar:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=10/1024=1%, Rehash=0, Collisions=0/30=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/32=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings  
-= 39 / storage = 636 B / avg = 16 B
-# current buf: size = 8174 B / used = 636 B / count = 39 / avg = 16 B
+# strcache buffers: 1 (0) / strings = 30 / storage = 424 B / avg = 14 B
+# current buf: size = 8174 B / used = 424 B / count = 30 / avg = 14 B
 
-# strcache performance: lookups = 55 / hit rate = 29%
+# strcache performance: lookups = 45 / hit rate = 33%
 # hash-table stats:
-# Load=39/8192=0%, Rehash=0, Collisions=0/55=0%
-# Finished Make data base on Sun Jul 24 08:57:27 2022
+# Load=30/8192=0%, Rehash=0, Collisions=0/45=0%
+# Finished Make data base on Mon Jul 25 16:22:02 2022
 
  

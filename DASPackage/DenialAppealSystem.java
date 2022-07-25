@@ -127,7 +127,15 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         loginButton.setOpaque(false);
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                LoginButtonClicked(evt);
+                try {
+                    LoginButtonClicked(evt);
+                } catch (ClassNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -643,16 +651,18 @@ public class DenialAppealSystem extends javax.swing.JFrame {
 
         // connEstablished = call controller class function 
         DatabaseController controller = new DatabaseController();
-        
-        // if function returns true
-        if(controller.DatabaseInit()){
+        if(!controller.DatabaseInit()){
+            connErr.setVisible(true);
+        }
+
+        if(controller.checkCredentials(usernameEntry, passwordEntry)){
             loginPanel.setVisible(false);
             denialList.setVisible(true);
             setTitle("Denial Appeal System - Denial List");
             welcome.setText("Welcome, "); // update string with username
             welcome1.setText("Welcome, ");// update string with username
         }else{
-            System.out.println("Fail");
+            connErr.setVisible(true);
         }
         
         //if function returns false, add call to connErr.setVisible(true);
