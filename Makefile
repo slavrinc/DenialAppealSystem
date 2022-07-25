@@ -1,7 +1,7 @@
 JAVAC = javac
 JAVACFLAGS =
-SRC= src/DenialAppealSystem.java \
-	 src/DatabaseController.java \
+SRC= src/DASPackage/DenialAppealSystem.java \
+	 src/DASPackage/DatabaseController.java \
 
 CLS= $(SRC:.java=.class)
 

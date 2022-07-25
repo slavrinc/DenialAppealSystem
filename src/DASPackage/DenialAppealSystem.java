@@ -1,5 +1,8 @@
+package DASPackage;
+import DASPackage.*;
 
 import java.awt.Color;
+import java.sql.SQLException;
 
 public class DenialAppealSystem extends javax.swing.JFrame {
 
@@ -628,7 +631,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      *   the connection could not be established.
      * 
      */
-    private void LoginButtonClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonClicked
+    private void LoginButtonClicked(java.awt.event.MouseEvent evt) throws 
+        ClassNotFoundException, SQLException {//GEN-FIRST:event_LoginButtonClicked
 
         String usernameEntry = username.getText();
         String passwordEntry = String.valueOf(password.getPassword());
@@ -638,13 +642,18 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         // so that we can do multiple function calls with controller class
 
         // connEstablished = call controller class function 
+        DatabaseController controller = new DatabaseController();
         
         // if function returns true
-        loginPanel.setVisible(false);
-        denialList.setVisible(true);
-        setTitle("Denial Appeal System - Denial List");
-        welcome.setText("Welcome, "); // update string with username
-        welcome1.setText("Welcome, ");// update string with username
+        if(controller.DatabaseInit()){
+            loginPanel.setVisible(false);
+            denialList.setVisible(true);
+            setTitle("Denial Appeal System - Denial List");
+            welcome.setText("Welcome, "); // update string with username
+            welcome1.setText("Welcome, ");// update string with username
+        }else{
+            System.out.println("Fail");
+        }
         
         //if function returns false, add call to connErr.setVisible(true);
         
