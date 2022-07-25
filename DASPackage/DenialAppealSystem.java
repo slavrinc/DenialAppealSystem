@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class DenialAppealSystem extends javax.swing.JFrame {
 
+    private String patientId;
+
     /**
      * Creates new form login
      */
@@ -681,7 +683,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      */
     public void updateDenialList(String[] denialStrings) {
         denialListList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7" };
+            String[] strings = denialStrings;
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -725,6 +727,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
     */
     private void denialListListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_denialListListMouseClicked
         javax.swing.JList<String> tmpClickItem = (javax.swing.JList) evt.getSource();
+        String[] splitString = new String[0];
+        String[] patientInfo = new String[17];
         if (evt.getClickCount()== 2){
             denialList.setVisible(false);
             letterGenPanel.setVisible(true);
@@ -732,8 +736,15 @@ public class DenialAppealSystem extends javax.swing.JFrame {
             int index = tmpClickItem.locationToIndex(evt.getPoint());
             if (index >= 0) {
                 Object o = tmpClickItem.getModel().getElementAt(index);
+                splitString = o.toString().split(" ");
                 System.out.println("Double-clicked on: " + o.toString()); //remove with functionality, temporary placeholder of list item that was selected
             }
+
+            DatabaseController controller = new DatabaseController();
+            patientInfo = controller.populatePatientInformation(splitString[0], splitString[1], splitString[2]);
+            patientId = patientInfo[0];
+            updatePatientInfo(patientInfo);
+
         }
         
     }//GEN-LAST:event_denialListListMouseClicked
@@ -747,19 +758,19 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      * - Add appropriate Strings to update the text of the fields
      * - Add appropriate String[] array to update the preGenAppealReasons text
     */
-    public void updatePatientInfo(){ // will need to add the strings that are obtained from the db
+    public void updatePatientInfo(String[] patientInfo){ // will need to add the strings that are obtained from the db
       
-        ptNameLabel.setText("Patient Name:");
-        ptDosLabel.setText("Date of Service:");
-        procLabel.setText("Procedure:");
-        dxLabel.setText("Diagnosis:");
-        attPhysLabel.setText("Attending Physician:");
-        insCoLabel.setText("Insurance Company:");
-        insCoAdd1.setText("Address: (line1)");
-        insCoAdd2.setText("(line2)");
-        insCoAdd3.setText("(line3/city,state zip)");
-        insCoLabel1.setText("Policy Number:");
-        ptDenialReasonLabel.setText("Denial Reason: ");
+        ptNameLabel.setText("Patient Name: " + patientInfo[1] + " " + patientInfo[2]);
+        ptDosLabel.setText("Date of Service: " + patientInfo[3]);
+        procLabel.setText("Procedure: " + patientInfo[4] + " - " + patientInfo[5]);
+        dxLabel.setText("Diagnosis: " + patientInfo[6] + " - " + patientInfo[7]);
+        attPhysLabel.setText("Attending Physician: " + patientInfo[8]);
+        insCoLabel.setText("Insurance Company: " + patientInfo[9]);
+        insCoAdd1.setText("Address: " + patientInfo[10]);
+        insCoAdd2.setText(patientInfo[11]);
+        insCoAdd3.setText("City, State Zip " + patientInfo[12] + ", " + patientInfo[13] + " " + patientInfo[14]);
+        insCoLabel1.setText("Policy Number: " + patientInfo[0]);
+        ptDenialReasonLabel.setText("Denial Reason: " + patientInfo[16]);
 
         preGenAppealReasons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reason1", "Reason2", "Reason3", "Reason4" }));
     }
