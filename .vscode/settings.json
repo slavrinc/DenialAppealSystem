@@ -2,7 +2,7 @@
     "makefile.extensionOutputFolder": "./.vscode",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "KGradientPanel-SNAPSHOT.jar",
-        "postgresql-42.2.18.jar"
+        "postgresql-42.2.18.jar",
+        "KGradientPanel-SNAPSHOT.jar"
     ]
 }
