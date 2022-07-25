@@ -653,8 +653,10 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         // connEstablished = call controller class function 
         DatabaseController controller = new DatabaseController();
 
-        if(true/*controller.DatabaseInit(usernameEntry, passwordEntry)*/){
+        if(controller.DatabaseInit(usernameEntry, passwordEntry)){
             loginPanel.setVisible(false);
+            String[] denialListArray = controller.populateDenialList();
+            updateDenialList(denialListArray);
             denialList.setVisible(true);
             setTitle("Denial Appeal System - Denial List");
             welcome.setText("Welcome, "); // update string with username
@@ -677,7 +679,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      * - Add controller class function to obtain an array of denial strings from the DB and call this function
      * - IN the controller class function
      */
-    public void updateDenialList(ArrayList<String> denialStrings) {
+    public void updateDenialList(String[] denialStrings) {
         denialListList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7" };
             public int getSize() { return strings.length; }

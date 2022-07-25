@@ -39,7 +39,7 @@ public class DatabaseController {
 
     }
 
-    public void populateDenialList(){
+    public String[] populateDenialList(){
         String firstName, lastName, insuranceName, dateOfService, statusText;
         ArrayList<String> populateList = new ArrayList<String>();
 
@@ -61,7 +61,10 @@ public class DatabaseController {
             e.printStackTrace();
         }
 
-        DenialAppealSystem das;
-        das.updateDenialList(populateList);
+        String[] populateListArray = populateList.toArray(new String[0]);
+
+        return populateListArray;
+
+    }
 
 }
