@@ -128,26 +128,53 @@ public class DatabaseController {
         return appealInformationArray;
     }
 
-    public boolean createDocument(String[] patientInfo, String[] appealDesc){
+    public boolean createDocument(String[] patientInfo, String appealDesc){
         File file = new File(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
         String separator = System.getProperty("line.separator");
         try {
             FileWriter writer = new FileWriter(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
             writer.write("(date)");
             writer.write(separator);
+            writer.write(separator);
             writer.write(patientInfo[9]);
             writer.write(separator);
             writer.write(patientInfo[10]);
             writer.write(separator);
             writer.write(patientInfo[11]);
-            writer.write(separator);
-
             writer.write(patientInfo[12] + ", " + patientInfo[13] + " " + patientInfo[14]);
             writer.write(separator);
+            writer.write(separator);
+            writer.write("RE: " + patientInfo[1] + " " + patientInfo[2] + " - " + patientInfo[0]);
+            writer.write(separator);
+            writer.write(separator);
+            writer.write("To whom it may concern:");
+            writer.write(separator);
+            writer.write(separator);
+            writer.write("Please accept this letter as " + patientInfo[1] + " " + patientInfo[2] + "'s appeal to " + patientInfo[9] 
+            + "'s decision to deny coverage for " + patientInfo[4] + " - " + patientInfo[5] + ". It is our understanding that based on your "
+            + "letter of denial that this procedure has been denied because:");
+            writer.write(separator);
+            writer.write(separator);
+            writer.write(appealDesc); // Change this to diagnosis reason
+            writer.write(separator);
+            writer.write(separator);
+            writer.write("As you know, " + patientInfo[1] + " " + patientInfo[2] + " was diagnosed with " + patientInfo[7] + ". Currently, Dr. "
+            + patientInfo[8] + " believes that " + patientInfo[1] + " " + patientInfo[2] + " will significantly benefit from " + patientInfo[5] 
+            + ". " + appealDesc);
+            writer.write(separator);
+            writer.write(separator);
+            writer.write("Attached, you will find the supporting medical documents that support this claim. Based on this information, " 
+            + patientInfo[1] + " " + patientInfo[2] + "s requesting that you reconsider your previous decision and allow coverage for the procedure outlined in Dr. "
+            + patientInfo[8] + "'s medical documents. Should you require additional information, please contact Dr. " + patientInfo[8]
+            + "'s medical billing team. Your cooperation is greatly appreciated.");
+            writer.write(separator);
+            writer.write(separator);
+            writer.write("Sincerely,");
+            writer.write(separator);
+            writer.write("The Billing Team at Company Companyson");
             writer.close();
-            System.out.println("Successfully wrote to the file.");
+            return true;
           } catch (IOException e) {
-            System.out.println("An error occurred.");
             e.printStackTrace();
           }
 

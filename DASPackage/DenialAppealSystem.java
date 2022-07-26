@@ -800,7 +800,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         String[] appealDescArray = appealDescList.toArray(new String[0]);
 
         preGenAppealReasons.setModel(new javax.swing.DefaultComboBoxModel<>(appealTitleArray));
-        controller.createDocument(patientInfo, appealDescArray);
+        controller.createDocument(patientInfo, appealDescArray[0]);
     }
 
     /* --------------------------------------------------------------------------------------------------
