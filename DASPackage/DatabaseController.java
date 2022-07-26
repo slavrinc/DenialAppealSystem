@@ -130,18 +130,20 @@ public class DatabaseController {
 
     public boolean createDocument(String[] patientInfo, String[] appealDesc){
         File file = new File(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
+        String separator = System.getProperty("line.separator");
         try {
             FileWriter writer = new FileWriter(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
             writer.write("(date)");
-            System.getProperty("line.separator");
+            writer.write(separator);
             writer.write(patientInfo[9]);
-            System.getProperty("line.separator");
+            writer.write(separator);
             writer.write(patientInfo[10]);
-            System.getProperty("line.separator");
+            writer.write(separator);
             writer.write(patientInfo[11]);
-            System.getProperty("line.separator");
+            writer.write(separator);
 
             writer.write(patientInfo[12] + ", " + patientInfo[13] + " " + patientInfo[14]);
+            writer.write(separator);
             writer.close();
             System.out.println("Successfully wrote to the file.");
           } catch (IOException e) {
