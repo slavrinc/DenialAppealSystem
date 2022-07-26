@@ -3,6 +3,9 @@ import java.util.Properties;
 import java.sql.*;
 import DASPackage.*;
 import java.util.ArrayList;
+import java.io.File;  // Import the File class
+import java.io.IOException;  // Import the IOException class to handle errors
+import java.io.FileWriter;
 
 public class DatabaseController {
     Connection conn;
@@ -71,7 +74,7 @@ public class DatabaseController {
         String[] patientInfo = new String[17];
 
         try{
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM requestPtInfo WHERE first_name = firstName AND last_name = lastName AND dos = dateOfService");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM requestPtInfo WHERE first_name = '" + firstName + "' AND last_name = '" +  lastName + "' AND dos = '" +  dateOfService + "';");
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 patientInfo[0] = rs.getString("patient_id");
@@ -123,8 +126,30 @@ public class DatabaseController {
         String[] appealInformationArray = appealInformationList.toArray(new String[0]);
 
         return appealInformationArray;
+    }
 
+    public boolean createDocument(String[] patientInfo, String[] appealDesc){
+        File file = new File(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
+        try {
+            FileWriter writer = new FileWriter(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
+            writer.write("(date)");
+            System.getProperty("line.separator");
+            writer.write(patientInfo[9]);
+            System.getProperty("line.separator");
+            writer.write(patientInfo[10]);
+            System.getProperty("line.separator");
+            writer.write(patientInfo[11]);
+            System.getProperty("line.separator");
 
+            writer.write(patientInfo[12] + ", " + patientInfo[13] + " " + patientInfo[14]);
+            writer.close();
+            System.out.println("Successfully wrote to the file.");
+          } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
+
+        return false;
     }
 
 }
