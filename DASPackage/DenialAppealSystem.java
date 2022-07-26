@@ -746,11 +746,11 @@ public class DenialAppealSystem extends javax.swing.JFrame {
             try {
                 try {
                     patientInfo = controller.populatePatientInformation(splitString[0].toString(), splitString[1].toString(), splitString[3].toString());
-                } catch (SQLException e){
-    
+                } catch (Exception e){
+                    System.out.println(e);
                 }
-            } catch (ClassNotFoundException e){
-
+            } catch (Exception e){
+                System.out.println(e);
             }
             
             patientId = patientInfo[0];
@@ -785,7 +785,21 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         insCoLabel1.setText("Policy Number: " + patientInfo[15]);
         ptDenialReasonLabel.setText("Denial Reason: " + patientInfo[16]);
 
-        preGenAppealReasons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reason1", "Reason2", "Reason3", "Reason4" }));
+        String[] appealInformationArray = controller.populateAppealInformation();
+        ArrayList<String> appealTitleList = new ArrayList<String>();
+        ArrayList<String> appealDescList = new ArrayList<String>();
+
+        for(int i = 0; i < appealInformationArray.length; i++){
+            String[] temp = new String[0];
+            temp = appealInformationArray[i].split("/");
+            appealTitleList.add(temp[0]);
+            appealDescList.add(temp[1]);
+        }
+
+        String[] appealTitleArray = appealTitleList.toArray(new String[0]);
+        String[] appealDescArray = appealDescList.toArray(new String[0]);
+
+        preGenAppealReasons.setModel(new javax.swing.DefaultComboBoxModel<>(appealTitleArray));
     }
 
     /* --------------------------------------------------------------------------------------------------
