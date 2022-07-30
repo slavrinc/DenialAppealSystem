@@ -4,6 +4,7 @@ import DASPackage.*;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.text.MessageFormat;
 
 public class DenialAppealSystem extends javax.swing.JFrame {
 
@@ -253,7 +254,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         denialScrollPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         denialListList.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-        denialListList.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        denialListList.setFont(new java.awt.Font("monospaced", 0, 12)); // NOI18N
         denialListList.setForeground(new java.awt.Color(0, 153, 153));
         denialListList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient9", "Patient10", "Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient9", "Patient10", "Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient9", "Patient10", "Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient9", "Patient10" };
@@ -628,61 +629,51 @@ public class DenialAppealSystem extends javax.swing.JFrame {
 
 
     /* --------------------------------------------------------------------------------------------------
-     * The following method allows a user to click the login button to login to the system.
-     * 
-     * Currently, this method ignores whether a connection was established to the database and
-     * always displays the following screen of the denialList.
-     * 
-     * To do:
-     * - Create the controller java class
-     * - Within the controller class, create a function that takes 2 strings (username and password),
-     *   and returns a boolean determined by whether a connection could be established.
-     *   Example: JavaDemoWOInjection.java 
-     * - If function returns true, use the code below to allow user entry into the system
-     * - If function returns false, call connErr.setVisible(true); to notify the user that
-     *   the connection could not be established.
-     * 
+     * The following method allows a user to click the login button to login to the system
+     * and displays an error message if the connection cannot be established.
      */
     private void LoginButtonClicked(java.awt.event.MouseEvent evt) throws 
         ClassNotFoundException, SQLException {//GEN-FIRST:event_LoginButtonClicked
 
         String usernameEntry = username.getText();
         String passwordEntry = String.valueOf(password.getPassword());
-        boolean connEstablished;
-        
-        // init new class - this may need to be defined outside of the function and initialized here
-        // so that we can do multiple function calls with controller class
 
-        // connEstablished = call controller class function 
-        // DatabaseController controller = new DatabaseController();
-
-        if(controller.DatabaseInit(usernameEntry, passwordEntry)){
+        try {
+            controller.DatabaseInit(usernameEntry, passwordEntry);
             loginPanel.setVisible(false);
             String[] denialListArray = controller.populateDenialList();
             updateDenialList(denialListArray);
             denialList.setVisible(true);
             setTitle("Denial Appeal System - Denial List");
-            welcome.setText("Welcome, "); // update string with username
-            welcome1.setText("Welcome, ");// update string with username
-        }else{
+            welcome.setText("Welcome, " + usernameEntry); 
+            welcome1.setText("Welcome, " + usernameEntry);
+        } catch (SQLException e) {
             connErr.setVisible(true);
+            System.out.println(e);
         }
-        
-        //if function returns false, add call to connErr.setVisible(true);
         
     }//GEN-LAST:event_LoginButtonClicked
 
     /* --------------------------------------------------------------------------------------------------
      * The following method is public to allow the controller class to update the denial list.
-     * 
-     * Currently, it is not called by any other function, will need to edit the functionality once it's used.
-     * Ideally, it'll function as a setter method for the denial list.
-     * 
-     * To do:
-     * - Add controller class function to obtain an array of denial strings from the DB and call this function
-     * - IN the controller class function
      */
     public void updateDenialList(String[] denialStrings) {
+        String[] tmpStrings = new String[5];
+        String form;
+        String comboForm;
+ 
+        int nameLen;
+        for (int i = 0; i < denialStrings.length; i++) {
+            tmpStrings = denialStrings[i].split(":");
+            nameLen = tmpStrings[0].length() + tmpStrings[1].length() + 1;
+            nameLen = 42 - nameLen;
+            comboForm = MessageFormat.format("%{0}s %16s", nameLen);
+            form = String.format(comboForm, tmpStrings[2], tmpStrings[3]);
+            form = tmpStrings[0] + " " + tmpStrings[1] + form + "   " + tmpStrings[4];
+            System.out.println(form);
+            denialStrings[i] = form;
+        }
+
         denialListList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = denialStrings;
             public int getSize() { return strings.length; }
@@ -692,12 +683,6 @@ public class DenialAppealSystem extends javax.swing.JFrame {
 
     /* --------------------------------------------------------------------------------------------------
      * The following method returns to the login screen when the logout button is selected by the user.
-     * 
-     * Currently, it returns to user to the logout screen.
-     * 
-     * To do:
-     * - Add code to disconnect from the db
-     * 
      */
     private void returnToLogin(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnToLogin
 
@@ -706,6 +691,11 @@ public class DenialAppealSystem extends javax.swing.JFrame {
             denialList.setVisible(false);
             setTitle("Denial Appeal System - Login");
             loginPanel.setVisible(true);
+            try {
+                controller.closeConn();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
 
         //if returning to the login screen from the letter generation screen:
@@ -713,22 +703,21 @@ public class DenialAppealSystem extends javax.swing.JFrame {
             letterGenPanel.setVisible(false);
             setTitle("Denial Appeal System - Login");
             loginPanel.setVisible(true);
+            try {
+                controller.closeConn();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_returnToLogin
 
     /* -------------------------------------------------------------------------------------------------- 
      * The following function allows the user to 'select' individual patients contained on the denial list.
-     * 
-     * Currently, it allows the patient to click on the list and automatically moves to the next screen
-     * 
-     * To do:
-     * - Create a function in the controller class that requests info from a single patient
-     *   within that function, call updatePatientInfo() to display the request within the view
-     * - Create a function in the controller class that requests the pregenerated denial list
     */
     private void denialListListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_denialListListMouseClicked
         javax.swing.JList<String> tmpClickItem = (javax.swing.JList) evt.getSource();
         String[] splitString = new String[0];
+        ArrayList<String> tmpArrList  = new ArrayList();
         String[] patientInfo = new String[17];
         if (evt.getClickCount()== 2){
             denialList.setVisible(false);
@@ -738,14 +727,22 @@ public class DenialAppealSystem extends javax.swing.JFrame {
             if (index >= 0) {
                 Object o = tmpClickItem.getModel().getElementAt(index);
                 splitString = o.toString().split(" ");
+                for (int i = 0; i<splitString.length; i++){
+                    splitString[i] = splitString[i].trim();
+                    if (splitString[i].length() != 0){
+                        tmpArrList.add(splitString[i]);
+                    }
+                }
+
                 System.out.println("Double-clicked on: " + o.toString()); //remove with functionality, temporary placeholder of list item that was selected
             }
 
-            
-            System.out.println(splitString[0].toString() +  splitString[1].toString() + splitString[3].toString());
+            //System.out.println(splitString[0].toString() +  splitString[1].toString() + splitString[3].toString());
+            System.out.println(tmpArrList);
+
             try {
                 try {
-                    patientInfo = controller.populatePatientInformation(splitString[0].toString(), splitString[1].toString(), splitString[3].toString());
+                    patientInfo = controller.populatePatientInformation(tmpArrList.get(0), tmpArrList.get(1), tmpArrList.get(3));
                 } catch (Exception e){
                     System.out.println(e);
                 }
@@ -763,11 +760,6 @@ public class DenialAppealSystem extends javax.swing.JFrame {
     /* -------------------------------------------------------------------------------------------------- 
      * The following function updates the text contained on the Letter Generation Screen
      * 
-     * Currently, it doesn't do anything that it should
-     * 
-     * To do:
-     * - Add appropriate Strings to update the text of the fields
-     * - Add appropriate String[] array to update the preGenAppealReasons text
     */
     public void updatePatientInfo(String[] patientInfo){ // will need to add the strings that are obtained from the db
 
@@ -815,6 +807,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      */
     private void returnToList(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnToList
         letterGenPanel.setVisible(false);
+        String[] denialListArray = controller.populateDenialList();
+        updateDenialList(denialListArray);
         denialList.setVisible(true);
         setTitle("Denial Appeal System - Denial List");
     }//GEN-LAST:event_returnToList

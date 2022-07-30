@@ -32,9 +32,9 @@ public class DatabaseController {
         stmt.setString(2, password);
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
-        loggedIn = true;
-        System.out.println("Successfully logged in");
-        return true;
+            loggedIn = true;
+            System.out.println("Successfully logged in");
+            return true;
         } else {
             System.out.println("Username and/or password not recognized");
             return false;
@@ -55,9 +55,8 @@ public class DatabaseController {
                 insuranceName = rs.getString("insurance_name");
                 dateOfService = rs.getString("dos");
                 statusText = rs.getString("status_text");
-                String concat = firstName + " " + lastName + " " + insuranceName + " " + dateOfService + " " + statusText;
+                String concat = firstName + ":" + lastName + ":" + insuranceName + ":" + dateOfService + ":" + statusText;
                 populateList.add(concat);
-
             }
         }
         catch (SQLException e) {
@@ -93,7 +92,7 @@ public class DatabaseController {
                 patientInfo[13] = rs.getString("state");
                 patientInfo[14] = rs.getString("zip");
                 patientInfo[15] = rs.getString("policy_number");
-                patientInfo[16] = rs.getString("status_text");
+                patientInfo[16] = rs.getString("denial_reason");
 
             }
         }
@@ -180,5 +179,11 @@ public class DatabaseController {
 
         return false;
     }
+
+    public void closeConn() throws SQLException {
+        conn.close();
+        return;
+    }
+
 
 }

@@ -13,4 +13,5 @@ all:  $(CLS)
 
 jar: $(classes)
 	jar -cp postgresql-42.2.18.jar $(classes) \
-	jar -cp KGradientPanel-SNAPSHOT.jar $(classes)
+	jar -cp KGradientPanel-SNAPSHOT.jar $(classes) \
+
