@@ -523,7 +523,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         coInsButton.setBackground(new java.awt.Color(0, 153, 153));
         coInsButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         coInsButton.setForeground(new java.awt.Color(102, 102, 102));
-        coInsButton.setText("Co Ins");
+        coInsButton.setText("PR");
         coInsButton.setOpaque(false);
         coInsButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -798,12 +798,6 @@ public class DenialAppealSystem extends javax.swing.JFrame {
     /* --------------------------------------------------------------------------------------------------
      * The following function is called when the user clicks the 'back' button on the letter generation 
      * screen. 
-     * 
-     * Currently, it just makes the previous screen invisible and makes the denial list visible
-     * 
-     * To do:
-     * - add code to generate a new denial list from the db
-     * 
      */
     private void returnToList(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnToList
         letterGenPanel.setVisible(false);
