@@ -830,6 +830,19 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         denialList.setVisible(true);
         setTitle("Denial Appeal System - Denial List");
         global_appealDescription = controller.getAppealReason(preGenAppealReasons.getSelectedItem().toString());
+
+        String text = jTextPane1.getText().trim();
+        String title = newAppealTitleTextField.getText().trim();
+        if(!text.equals("")){
+            global_appealDescription = text;
+            if(saveAppealReasonCheckBox.isSelected()){
+                try{
+                    controller.updateAppealList(title, text);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
         controller.createDocument(global_patientInfo, global_appealDescription);
     }//GEN-LAST:event_submitAppeal
 
