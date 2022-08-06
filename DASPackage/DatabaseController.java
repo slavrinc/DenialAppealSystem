@@ -158,7 +158,7 @@ public class DatabaseController {
             + "letter of denial that this procedure has been denied because:");
             writer.write(separator);
             writer.write(separator);
-            writer.write(appealDesc); // Change this to diagnosis reason
+            writer.write(patientInfo[16]); // Change this to diagnosis reason
             writer.write(separator);
             writer.write(separator);
             writer.write("As you know, " + patientInfo[1] + " " + patientInfo[2] + " was diagnosed with " + patientInfo[7] + ". Currently, Dr. "
