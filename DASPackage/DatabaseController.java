@@ -139,7 +139,7 @@ public class DatabaseController {
             LocalDate todaysDate = LocalDate.now();
             
             FileWriter writer = new FileWriter(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
-            writer.write(todaysDate);
+            writer.write(todaysDate.toString());
             writer.write(separator);
             writer.write(separator);
             writer.write(patientInfo[9]);
