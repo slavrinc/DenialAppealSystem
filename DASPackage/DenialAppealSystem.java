@@ -825,8 +825,6 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      */
     private void submitAppeal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitAppeal
         letterGenPanel.setVisible(false);
-        String[] denialListArray = controller.populateDenialList();
-        updateDenialList(denialListArray);
         denialList.setVisible(true);
         setTitle("Denial Appeal System - Denial List");
         global_appealDescription = controller.getAppealReason(preGenAppealReasons.getSelectedItem().toString());
@@ -856,6 +854,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         }
         jTextPane1.setText("");
         newAppealTitleTextField.setText("");
+        String[] denialListArray = controller.populateDenialList();
+        updateDenialList(denialListArray);
 
     }//GEN-LAST:event_submitAppeal
 
