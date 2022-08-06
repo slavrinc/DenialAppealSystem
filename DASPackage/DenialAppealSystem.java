@@ -796,6 +796,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         String[] appealDescArray = appealDescList.toArray(new String[0]);
 
         preGenAppealReasons.setModel(new javax.swing.DefaultComboBoxModel<>(appealTitleArray));
+        preGenAppealReasons.setSelectedIndex(-1);
         global_patientInfo = patientInfo;
         global_appealDescription = controller.getAppealReason(preGenAppealReasons.getSelectedItem().toString());
     }
