@@ -10,6 +10,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
 
     private String patientId;
     private String patientdos;
+    private String[] global_patientInfo = new String[17];
+    private String global_appealDescription;
     public DatabaseController controller = DatabaseController.getInstance();
 
     /**
@@ -794,7 +796,8 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         String[] appealDescArray = appealDescList.toArray(new String[0]);
 
         preGenAppealReasons.setModel(new javax.swing.DefaultComboBoxModel<>(appealTitleArray));
-        controller.createDocument(patientInfo, appealDescArray[0]);
+        global_patientInfo = patientInfo;
+        global_appealDescription = appealDescArray[0];
     }
 
     /* --------------------------------------------------------------------------------------------------
@@ -827,6 +830,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
         updateDenialList(denialListArray);
         denialList.setVisible(true);
         setTitle("Denial Appeal System - Denial List");
+        controller.createDocument(global_patientInfo, global_appealDescription);
     }//GEN-LAST:event_submitAppeal
 
     /* --------------------------------------------------------------------------------------------------
