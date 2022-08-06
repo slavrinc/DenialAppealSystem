@@ -844,6 +844,19 @@ public class DenialAppealSystem extends javax.swing.JFrame {
             }
         }
         controller.createDocument(global_patientInfo, global_appealDescription);
+
+        try {
+            try {
+                controller.updateStatus(patientId, patientdos, "A");
+            } catch (ClassNotFoundException c) {
+                System.out.println(c);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        jTextPane1.setText("");
+        newAppealTitleTextField.setText("");
+
     }//GEN-LAST:event_submitAppeal
 
     /* --------------------------------------------------------------------------------------------------
