@@ -227,4 +227,28 @@ public class DatabaseController {
 
     }
 
+    
+    public String getAppealReason(String appealTitle){
+        String description = "";
+        //ArrayList<String> appealInformationList = new ArrayList<String>();
+
+        try{
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM appeals WHERE appeal_title = '" + appealTitle + "';");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                description = rs.getString("appeal_text");
+                //String concat = title + "/" + description;
+                //appealInformationList.add(concat);
+
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //String[] appealInformationArray = appealInformationList.toArray(new String[0]);
+
+        return description;
+    }
+
 }
