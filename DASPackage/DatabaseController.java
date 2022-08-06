@@ -10,8 +10,12 @@ import java.io.FileWriter;
 public class DatabaseController {
     Connection conn;
 
-    public DatabaseController(){
-        
+    private static DatabaseController instance = new DatabaseController();
+
+    private DatabaseController(){}
+
+    public static DatabaseController getInstance() {
+        return instance;
     }
 
     public boolean DatabaseInit(String username, String password) throws
@@ -185,5 +189,42 @@ public class DatabaseController {
         return;
     }
 
+    public void updateStatus(String patient_id, String dos, String newStatus) throws
+    SQLException, ClassNotFoundException {
+
+        Statement st = conn.createStatement();
+
+        try {
+            conn.setAutoCommit(false);
+            st.executeUpdate("UPDATE PROCEDURE_INFO SET status_code = '" + newStatus + "' WHERE patient_id = '" + patient_id + "' AND dos = '" + dos + "';");
+            conn.commit();
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException e2) {
+                System.out.println(e2.toString());
+            }
+        }
+
+    }
+
+    public void updateAppealList(String title, String reason) throws
+    SQLException, ClassNotFoundException {
+
+        Statement st = conn.createStatement();
+
+        try {
+            conn.setAutoCommit(false);
+            st.executeUpdate("INSERT INTO APPEALS (appeal_title, appeal_text)  VALUES ('" + title + "', '" + reason + "');");
+            conn.commit();
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException e2) {
+                System.out.println(e2.toString());
+            }
+        }
+
+    }
 
 }

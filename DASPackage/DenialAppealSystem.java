@@ -9,7 +9,8 @@ import java.text.MessageFormat;
 public class DenialAppealSystem extends javax.swing.JFrame {
 
     private String patientId;
-    public DatabaseController controller = new DatabaseController();
+    private String patientdos;
+    public DatabaseController controller = DatabaseController.getInstance();
 
     /**
      * Creates new form login
@@ -764,6 +765,7 @@ public class DenialAppealSystem extends javax.swing.JFrame {
     public void updatePatientInfo(String[] patientInfo){ // will need to add the strings that are obtained from the db
 
         patientId = patientInfo[0];
+        patientdos = patientInfo[3];
       
         ptNameLabel.setText("Patient Name: " + patientInfo[1] + " " + patientInfo[2]);
         ptDosLabel.setText("Date of Service: " + patientInfo[3]);
@@ -814,15 +816,15 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      * Currently, it just makes the previous screen invisible and makes the denial list visible
      * 
      * To do:
-     * - add code to generate a new denial list from the db
-     * - create function in the controller class to generate an appeal letter
-     * - create function in the controller class to update the claim code in the db
-     * - create function in the controller class to add a new denial reason to the db
-     * - if saveAppealReasonCheckBox is selected, call the function to create a new denial reason
+     * - call function in the controller class to generate an appeal letter
+     * - if saveAppealReasonCheckBox was checked, call updateAppealList
+     * - call updateStatus to update the claim code in the db
      * 
      */
     private void submitAppeal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitAppeal
         letterGenPanel.setVisible(false);
+        String[] denialListArray = controller.populateDenialList();
+        updateDenialList(denialListArray);
         denialList.setVisible(true);
         setTitle("Denial Appeal System - Denial List");
     }//GEN-LAST:event_submitAppeal
@@ -830,18 +832,24 @@ public class DenialAppealSystem extends javax.swing.JFrame {
     /* --------------------------------------------------------------------------------------------------
      * The following function is called when the user clicks the 'Co Ins' button on the letter generation 
      * screen. 
-     * 
-     * Currently, it just makes the previous screen invisible and makes the denial list visible
-     * 
-     * To do:
-     * - add code to generate a new denial list from the db
-     * - use function in the controller class to update the claim code in the db
-     * 
      */
     private void patientResponsibility(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientResponsibility
         letterGenPanel.setVisible(false);
+        try {
+            try {
+                controller.updateStatus(patientId, patientdos, "PT");
+            } catch (ClassNotFoundException c) {
+                System.out.println(c);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        String[] denialListArray = controller.populateDenialList();
+        updateDenialList(denialListArray);
         denialList.setVisible(true);
+
         setTitle("Denial Appeal System - Denial List");
+
     }//GEN-LAST:event_patientResponsibility
 
 
