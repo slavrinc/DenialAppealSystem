@@ -144,10 +144,11 @@ public class DatabaseController {
             writer.write(patientInfo[10]);
             writer.write(separator);
             writer.write(patientInfo[11]);
+            writer.write(separator);
             writer.write(patientInfo[12] + ", " + patientInfo[13] + " " + patientInfo[14]);
             writer.write(separator);
             writer.write(separator);
-            writer.write("RE: " + patientInfo[1] + " " + patientInfo[2] + " - " + patientInfo[0]);
+            writer.write("RE: " + patientInfo[1] + " " + patientInfo[2] + " - " + patientInfo[15]);
             writer.write(separator);
             writer.write(separator);
             writer.write("To whom it may concern:");

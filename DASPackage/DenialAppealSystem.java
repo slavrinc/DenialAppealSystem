@@ -814,14 +814,6 @@ public class DenialAppealSystem extends javax.swing.JFrame {
      /* --------------------------------------------------------------------------------------------------
      * The following function is called when the user clicks the 'submit' button on the letter generation 
      * screen. 
-     * 
-     * Currently, it just makes the previous screen invisible and makes the denial list visible
-     * 
-     * To do:
-     * - call function in the controller class to generate an appeal letter
-     * - if saveAppealReasonCheckBox was checked, call updateAppealList
-     * - call updateStatus to update the claim code in the db
-     * 
      */
     private void submitAppeal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitAppeal
         letterGenPanel.setVisible(false);
@@ -842,7 +834,6 @@ public class DenialAppealSystem extends javax.swing.JFrame {
             }
         }
         controller.createDocument(global_patientInfo, global_appealDescription);
-
         try {
             try {
                 controller.updateStatus(patientId, patientdos, "A");
