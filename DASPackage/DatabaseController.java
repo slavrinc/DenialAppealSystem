@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.io.File;  // Import the File class
 import java.io.IOException;  // Import the IOException class to handle errors
 import java.io.FileWriter;
+import java.time.LocalDate;
 
 public class DatabaseController {
     Connection conn;
@@ -135,8 +136,10 @@ public class DatabaseController {
         File file = new File(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
         String separator = System.getProperty("line.separator");
         try {
+            LocalDate todaysDate = LocalDate.now();
+            
             FileWriter writer = new FileWriter(patientInfo[1] + "_" + patientInfo[2] + "appeal_letter.txt");
-            writer.write("(date)");
+            writer.write(todaysDate);
             writer.write(separator);
             writer.write(separator);
             writer.write(patientInfo[9]);
