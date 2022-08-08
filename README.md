@@ -20,4 +20,4 @@ By using this software, a company can:
 *	Allow for more effective patient service advocacy
 *	Allow the billing specialist more time to focus on their other responsibilities
 
-Please review the WhitePaper.pdf file for additional user information.
+Please review the WhitePaper.docx file for additional user information.
